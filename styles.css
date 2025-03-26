@@ -1,0 +1,675 @@
+* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1A1F2C;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.025em;
+}
+
+/* Background */
+.background {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+}
+
+/* Decorative elements */
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.circle-1 {
+  top: 5rem;
+  left: 5rem;
+  width: 16rem;
+  height: 16rem;
+  background-color: #fff;
+  filter: blur(3rem);
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle-2 {
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 24rem;
+  height: 24rem;
+  background-color: #fff;
+  filter: blur(3rem);
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.circle-3 {
+  top: 33%;
+  right: 25%;
+  width: 8rem;
+  height: 8rem;
+  background-color: #FBCF33;
+  filter: blur(2rem);
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Islamic pattern overlay */
+.pattern-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.15;
+}
+
+/* Moon decoration */
+.moon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+  animation: glow 4s ease-in-out infinite;
+}
+
+.moon-inner {
+  position: absolute;
+  top: 0.5rem;
+  right: -0.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #134e5e;
+  transform: translateX(-10%);
+}
+
+/* Lanterns */
+.lantern {
+  position: absolute;
+  width: 3rem;
+  height: 5rem;
+  background: linear-gradient(to bottom, #FBCF33, #F5A623);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 15px rgba(245, 166, 35, 0.6);
+  opacity: 0.9;
+  animation: float 5s ease-in-out infinite;
+}
+
+.lantern::before,
+.lantern::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lantern::before {
+  top: -0.5rem;
+  width: 1rem;
+  height: 0.5rem;
+  background-color: #997328;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.lantern::after {
+  bottom: -1rem;
+  width: 2rem;
+  height: 1rem;
+  background-color: #997328;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.lantern-1 {
+  top: 15%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.lantern-2 {
+  top: 25%;
+  right: 7%;
+  animation-delay: 1s;
+}
+
+.lantern-3 {
+  bottom: 20%;
+  left: 10%;
+  animation-delay: 2s;
+}
+
+/* Light rays behind character */
+.light-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle, rgba(251, 207, 51, 0.3) 0%, rgba(251, 207, 51, 0) 70%);
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.content.loaded {
+  opacity: 1;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: calc(100vh - 4rem);
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 3rem 2rem;
+  }
+}
+
+/* Character Section */
+.character-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .character-section {
+    width: 50%;
+    margin-bottom: 0;
+  }
+}
+
+.character-container {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .character-container {
+    width: 400px;
+    height: 450px;
+  }
+}
+
+.character {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-out;
+}
+
+.character.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.character-img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+  animation: prayingMotion 3s ease-in-out infinite;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Character switch animation */
+.character-img.switching {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Prayer effect - glowing hands */
+.prayer-effect {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: prayerGlow 3s ease-in-out infinite;
+}
+
+.effect-delayed {
+  animation-delay: 1.5s;
+}
+
+/* Greeting Section */
+.greeting-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .greeting-section {
+    width: 50%;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.greeting {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: all 1s ease;
+}
+
+.greeting.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(0.25rem);
+  border-radius: 9999px;
+  padding: 0.25rem 1rem;
+  margin-bottom: 0.5rem;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.badge span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 3.75rem;
+  }
+}
+
+.text-shimmer {
+  background-image: linear-gradient(to right, #FBCF33, #F5A623, #fff);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s linear infinite;
+}
+
+.message {
+  font-size: 1.125rem;
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .message {
+    font-size: 1.25rem;
+    margin: 0 0 1.5rem;
+  }
+}
+
+/* Name input styles */
+.name-input-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .name-input-container {
+    flex-direction: row;
+  }
+}
+
+.name-input {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.25rem);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #FBCF33;
+  box-shadow: 0 0 0 2px rgba(251, 207, 51, 0.25);
+}
+
+.name-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.submit-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(251, 207, 51, 0.1);
+  color: #FBCF33;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(251, 207, 51, 0.2);
+}
+
+.submit-btn:hover {
+  background-color: rgba(251, 207, 51, 0.2);
+  transform: translateY(-0.125rem);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.from-name {
+  padding-top: 1rem;
+  font-size: 1.125rem;
+  color: #fff;
+}
+
+.from-name span {
+  position: relative;
+  display: inline-block;
+  color: #FBCF33;
+  font-weight: 500;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#result-name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.name-animation {
+  animation: popIn 0.5s ease-out forwards;
+}
+
+.from-name span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #FBCF33;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+
+.from-name span:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.actions {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.wishes-text {
+  color: #fff;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+/* Button */
+button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.75rem);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 9999px;
+  color: #FBCF33;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+footer p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  z-index: 100;
+  border-radius: 50%;
+  animation: confettiFall 5s ease-in-out forwards;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.625rem);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.7);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes prayingMotion {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+@keyframes prayerGlow {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Character switching animation */
+@keyframes characterSwitch {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Utility classes */
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Cursor animation */
+.cursor {
+  display: inline-block;
+  width: 0.25rem;
+  height: 1em;
+  background-color: #FBCF33;
+  margin-left: 0.25rem;
+  vertical-align: text-top;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Glass effect */
+.glass-effect {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
