@@ -3,34 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eid Mubarak</title>
-    <meta name="description" content="Eid Wishes Craft" />
-    <meta name="author" content="Lovable" />
+    <title>Space Eid Greetings</title>
+    <meta name="description" content="Futuristic Space Eid Wishes" />
+    <!-- <meta name="author" content="Lovable" /> -->
 
-    <meta property="og:title" content="Eid Mubarak" />
-    <meta property="og:description" content="Eid Wishes Craft" />
+    <meta property="og:title" content="Space Eid Mubarak" />
+    <meta property="og:description" content="Futuristic Space Eid Wishes" />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/png" href="kid.png">
-
-   
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
 
   <body>
     <div class="background">
-      <!-- Decorative elements -->
+      <!-- Decorative elements for space theme -->
       <div class="decorative-circle circle-1"></div>
       <div class="decorative-circle circle-2"></div>
       <div class="decorative-circle circle-3"></div>
       
-      <!-- Islamic pattern overlay -->
+      <!-- Space pattern overlay -->
       <div class="pattern-overlay"></div>
       
-      <!-- Moon decoration -->
-      <div class="moon">
+      <!-- Moon decoration - now with rotation -->
+      <div class="moon rotating">
         <div class="moon-inner"></div>
+        <div class="moon-crater moon-crater-1"></div>
+        <div class="moon-crater moon-crater-2"></div>
+        <div class="moon-crater moon-crater-3"></div>
+      </div>
+      
+      <!-- Orbital system with planets -->
+      <div class="orbital-system">
+        <!-- Orbit 1 -->
+        <div class="orbit orbit-1">
+          <div class="planet planet-1"></div>
+        </div>
+        
+        <!-- Orbit 2 -->
+        <div class="orbit orbit-2">
+          <div class="planet planet-2"></div>
+        </div>
+        
+        <!-- Orbit 3 -->
+        <div class="orbit orbit-3">
+          <div class="planet planet-3"></div>
+        </div>
       </div>
       
       <!-- Content container -->
@@ -38,9 +56,9 @@
         <main class="container">
           <div class="character-section">
             <div class="character-container">
-              <!-- Character image -->
+              <!-- Character image with hologram effect -->
               <div id="character" class="character">
-                <img src="boy.png" alt="Eid Character" class="character-img">
+                <img src="boy.png" alt="Space Eid Character" class="character-img">
                 <div class="prayer-effect"></div>
                 <div class="prayer-effect effect-delayed"></div>
               </div>
@@ -53,7 +71,7 @@
           <div class="greeting-section">
             <div class="greeting">
               <div class="badge">
-                <span id="current-year">Eid Mubarak 2024</span>
+                <span id="current-year">Eid Mubarak 2025</span>
               </div>
               
               <h1 class="title">
@@ -62,7 +80,7 @@
               
               <p id="animated-text" class="message"></p>
               
-              <!-- Name input form -->
+              <!-- Name input form with futuristic design -->
               <div class="name-input-container">
                 <input type="text" id="visitor-name" placeholder="Enter your name" class="name-input glass-effect">
                 <button id="submit-name" class="submit-btn glass-effect">
@@ -76,25 +94,23 @@
               
               <div class="actions">
                 <p class="wishes-text">
-                  May this Eid bring joy, peace, and prosperity to you and your family.
+                  May this Eid bring cosmic joy, interstellar peace, and prosperity to you and your family.
                 </p>
                 
-                <!-- Interactive button -->
+                <!-- Interactive button with space design -->
                 <button id="send-wishes" class="glass-effect">
-                  Send More Wishes
+                  Send Wishes
                 </button>
               </div>
             </div>
           </div>
         </main>
         
-        <!-- Lanterns decorations -->
-        <div class="lantern lantern-1"></div>
-        <div class="lantern lantern-2"></div>
-        <div class="lantern lantern-3"></div>
+        <!-- Space orbs instead of lanterns -->
+        <!-- These will be created dynamically in JS -->
         
         <footer>
-          <p>&copy; <span id="footer-year">2024</span> Eid Mubarak • Made by Mohd Waqar ♥</p>
+          <p>&copy; <span id="footer-year">2025</span> Eid Mubarak • Made by Mohd Waqar ♥</p>
         </footer>
       </div>
     </div>
